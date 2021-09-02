@@ -16,6 +16,16 @@ function addImage (src) {
     document.body.appendChild(img);
 }
 
+function addVideo (src) {
+    var video = document.createElement("video");
+    video.src = src;
+    video.autoplay = true;
+    video.muted = true;
+    video.controls = true;
+    video.loop = true;
+    document.body.appendChild(video);
+}
+
 var dayIndex = (new Date()).getDay();
 var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -29,6 +39,9 @@ document.title = daysOfWeek[dayIndex];
 switch (dayIndex) {
     case 1:
         addImage("caseofthemondays.jpg");
+        break;
+    case 2:
+        addVideo("trolleytuesday.mp4");
         break;
     case 3:
         if (Math.random() > 0.5) {

@@ -9,11 +9,22 @@ I use JavaScript to set the date on this website. The script is very short,
 very simple - feel free to look at this page's source and read it.
 </noscript>
 
+<hr />
+<p>Made by <a href="https://dylant.org">me</a>. <a href="https://github.com/dylan-thinnes/whatdayisit">Contributions welcome</a>. </p>
+
 <script>
+function prependToBody (el) {
+    if (document.body.children.length == 0) {
+        document.body.appendChild(el);
+    } else {
+        document.body.insertBefore(el, document.body.children[0]);
+    }
+}
+
 function addImage (src) {
     var img = document.createElement("img");
     img.src = src;
-    document.body.appendChild(img);
+    prependToBody(img);
 }
 
 function addVideo (src) {
@@ -23,15 +34,11 @@ function addVideo (src) {
     video.muted = true;
     video.controls = true;
     video.loop = true;
-    document.body.appendChild(video);
+    prependToBody(video);
 }
 
 var dayIndex = (new Date()).getDay();
 var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-var result = document.createElement("h1");
-result.innerText = "Today is " + daysOfWeek[dayIndex] + ".";
-document.body.appendChild(result);
 
 document.title = daysOfWeek[dayIndex];
 
@@ -53,6 +60,10 @@ switch (dayIndex) {
     default:
         break;
 }
+
+var result = document.createElement("h1");
+result.innerText = "Today is " + daysOfWeek[dayIndex] + ".";
+prependToBody(result);
 </script>
 </body>
 </html>

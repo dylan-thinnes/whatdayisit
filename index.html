@@ -45,7 +45,11 @@ document.title = daysOfWeek[dayIndex];
 // Oooh, using a switch! Everybody run away!
 switch (dayIndex) {
     case 1:
-        addImage("caseofthemondays.jpg");
+        if (Math.random() > 0.5) {
+            addImage("itismoondaymydudes.jpg");
+        } else {
+            addImage("caseofthemondays.jpg");
+        }
         break;
     case 2:
         addVideo("trolleytuesday.mp4");
